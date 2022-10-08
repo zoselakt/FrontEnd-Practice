@@ -1,0 +1,73 @@
+@charset "UTF-8";
+*{margin: 0; padding: 0; box-sizing: border-box;}
+html, body{height: 100%;}
+ul, ol{list-style: none;}
+a{color: #666; text-decoration: none;}
+/*이미지로 사용시*/
+a.on{
+    border: 2px solid red;
+}
+ul{
+    display: flex;
+    margin-bottom: 20px;
+}
+
+ul li a{
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+    padding-bottom: 10px;
+    font-style: 20px;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    text-indent: -9999px;
+    background-size: cover;
+}
+ul li:nth-child(1) a{
+    background-image: url(../img/img01.jpg);
+}
+ul li:nth-child(2) a{
+    background-image: url(../img/img02.jpg);
+}
+ul li:nth-child(3) a{
+    background-image: url(../img/img03.jpg);
+}
+ul li:nth-child(4) a{
+    background-image: url(../img/img04.jpg);
+}
+
+/*-----------------------------------------------------------*/
+/* 텍스트 메뉴 언더바 적용*/
+ul li.txt a.on::after{
+    content: '';
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: red;
+}
+ul li.txt a{
+    border: 0;
+}
+
+ul li.txt a{
+    text-indent: 0;
+    width: auto;
+}
+
+ul li.txt:nth-child(1) a{
+    background-image: none;
+}
+ul li.txt:nth-child(2) a{
+    background-image: none;
+}
+ul li.txt:nth-child(3) a{
+    background-image: none;
+}
+ul li.txt:nth-child(4) a{
+    background-image: none;
+}
+/*-----------------------------------------------------------*/
