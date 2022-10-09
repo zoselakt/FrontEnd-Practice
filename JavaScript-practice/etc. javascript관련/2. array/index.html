@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./array.js"></script>
+</head>
+<body>
+    <div>
+        기본배열<br>
+	    var member = ['egoing ', 'zoselakt ', 'youtube'];<br><br>
+    </div>
+    <div>
+        다중배열<br>
+        let array = [["가","나,","다"],"서울",["a", "b", "c", "d"]];<br><br>
+    </div>
+    <div>
+        함수사용 배열<br>
+        function get_members(){<br>
+            return['egoing ', 'zoselakt ', 'youtube'];<br>
+        }<br><br>
+    </div>
+    <div>
+        for문 사용 배열<br>
+        var a = ['egoing ', 'coding ', 'zoselakt ', 'javascript ', 'JSP']<br>
+        for(var i=0; i<a.length; i++){<br>
+            document.write(a[i]);<br>
+        }<br>
+        document.write("<br/>");<br><br>
+    </div>
+    <div>
+        배열의 확장<br>
+        var arr = new Array('seoul', 'new york', 'tokyo', 'deagu', 'osaka');<br>
+        function getRandomValueFromArray(arr){<br>
+            var index = Math.floor(arr.length*Math.random());<br>
+            return arr[index];<br>
+        }<br>
+        console.log(getRandomValueFromArray(arr));<br><br>
+
+        배열의 확장2<br>
+        Array.prototype.random = function(){<br>
+            var index = Math.floor(this.length*Math.random());<br>
+            return this[index];<br>
+        }<br>
+        var arr1 = new Array('pusan', 'paris', 'washington DC', 'newdeli', 'otawa');<br>
+        console.log(arr1.random());
+    </div>
+</body>
+</html>

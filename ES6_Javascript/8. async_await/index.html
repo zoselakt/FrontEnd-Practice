@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async_await</title>
+    <script type="text/javascript" src="./async_await.js"></script>
+</head>
+<body>
+    <div>
+        async<br>
+        - AsyncFunction객체를 반환하는 하나의 비동기 함수를 정의합니다. <br>
+        이벤트 루프를 통해 비동기적으로 작동하는 함수로, Promise를 사용하여 결과를 반환합니다<br><br>
+
+        async/await함수의 목적은 사용하는 여러 promise의 동작을 동기스럽게 사용할 수 있게 하고, <br>
+        어떠한 동작을 여러 promise의 그룹에서 간단하게 동작하게 하는 것이다. <br>
+        promise가 구조화된 callback과 유사한 것 처럼 async/await 또한 <br>
+        제네레이터(generator)와 프로미스(promise)를 묶는것과 유사하다.<br><br>
+
+        function 앞에 async를 붙이면 해당 함수는 항상 프라미스를 반환합니다. <br>
+        프라미스가 아닌 값을 반환하더라도 이행 상태의 프라미스(resolved promise)로 값을 감싸 이행된 프라미스가 반환되도록 합니다.<br><br>
+
+        async funtion getName(){<br>
+			throw new Error("err...");<br>
+        }<br>
+        getName().catch((err) => {<br>
+            console.log(err);<br>
+        })<br><br>
+    </div>
+    <div>
+        await<br>
+        - promise를 기다리기 위해 사용 / async function내부에서만 사용가능<br>
+        promise.then보다 가독성 좋고 쓰기도 쉽다.<br>
+        await은 ‘thenable’ 객체를 받습니다.<br>
+
+        function getName(name){<br>
+            return new Promise((resolve, reject) =>{<br>
+                setTimeout(() => {<br>
+                    resolve(name);<br>
+                }, 1000);<br>
+            });<br>
+        };<br><br>
+
+        async funtion showName(){<br>
+            const result = await getName("Mike");<br>
+            console.log(result);<br>
+        }<br>
+        console.log("시작");<br>
+        showName();<br><br>
+    
+        const f1 = () => {<br>
+            return new Promise((res, rej) => {<br>
+                setTimeout(() => {<br>
+                    res("1번 주문 완료");<br>
+                }, 1000);<br>
+            });<br>
+        };<br><br>
+    
+        const f2 = (message) => {<br>
+            console.log(message);<br>
+            return new Promise((res, rej) => {<br>
+                setTimeout(() => {<br>
+                    res("2번 주문 완료");<br>
+                }, 3000);<br>
+            });<br>
+        };<br><br>
+    
+        const f3 = (message) => {<br>
+            console.log(message);<br>
+            return new Promise((res, rej) => {<br>
+                setTimeout(() => {<br>
+                    res("3번 주문 완료");<br>
+                }, 2000);<br>
+            });<br>
+        };<br><br>
+    </div>
+    <div>
+        async/await를 사용하면 promise.then/catch가 거의 필요 없습니다. <br>
+        하지만 가끔 가장 바깥 스코프에서 비동기 처리가 필요할 때같이 promise.then/catch를 써야만 하는 경우가 생긴다.<br>
+        이 작업들이 모두 완료될 때까지 기다리려면 Promise.all을 활용할 수 있다.<br>
+        또한 프라미스 체이닝 또한 더욱 쉽게 작성가능하다.
+    </div>
+</body>
+</html>

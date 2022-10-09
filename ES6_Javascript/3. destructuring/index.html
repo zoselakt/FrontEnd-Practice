@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> destructuring </title>
+    <script type="text/javascript" src="./destructuring.js"></script>
+</head>
+<body>
+    <div>
+        destructuring assignment<br>
+        - 객체나 배열 등 인덱스가 존재하는 구조에서 필요한 값만을 추출하여 변수에 할당하거나 반환할 때 사용된다.<br>
+        let users = ['Mike', 'Tom', 'jane'];<br>
+        let [user1, user2, user3] = users;<br>
+
+        document.write(user1);<br>
+        document.write(user2);<br>
+        document.write(user3);<br><br>
+    </div>
+    <div>
+        split사용<br>
+        let str = "Mike-Tom-jane";<br>
+        let [user4, user5, user6] = str.split('-');<br><br>
+    </div>
+    <div>
+        이름 바꾸기<br>
+        let user = {name: 'Mike', age: 30};<br>
+        let {name, age} = user;<br>
+
+        let {name:userName, age:userAge} = user; <br><br>
+    </div>
+    <div>
+        쉼표를 사용하면 필요하지 않은 배열 요소를 버릴 수 있습니다.<br>
+        두 번째 요소는 필요하지 않음<br>
+        let [firstName, , title] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];<br>
+
+        console.log(title);<br><br>
+    </div>
+    <div>
+        .entries()로 반복하기<br>
+        Object.entries() 메서드는 for...in와 같은 순서로 주어진 객체 자체의 <br>
+        enumerable 속성 [key, value] 쌍의 배열을 반환합니다.<br>
+        let admin = {<br>
+            name: "John",<br>
+            age: 30<br>
+        };<br><br>
+
+        for (let [key, value] of Object.entries(admin)) {<br>
+            alert(`${key}:${value}`); // name:John, age:30이 차례대로 출력<br>
+        }<br><br>
+    </div>
+    <div>
+        Map() 에서도 활용할수 있다.<br>
+        let administ = new Map();<br>
+        administ.set("name", "John");<br>
+        administ.set("age", "30");<br>
+
+        for (let [key, value] of administ) {<br>
+            alert(`${key}:${value}`); // name:John, then age:30<br>
+        }<br><br>
+    </div>
+    <div>
+        '…'로 나머지 요소 가져오기<br>
+        배열 앞쪽에 위치한 값 몇 개만 필요하고 그 이후 이어지는 나머지 값들은 한데 모아서 저장하고 싶을 때가 있습니다. <br>
+        이럴 때는 점 세 개 ...를 붙인 매개변수 하나를 추가하면 ‘나머지(rest)’ 요소를 가져올 수 있습니다.<br>
+        let [name1, name2, ...rest] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];<br><br>
+
+        alert(name1); // Julius<br>
+        alert(name2); // Caesar<br><br>
+
+        // `rest`는 배열입니다.<br>
+        alert(rest[0]); // Consul<br>
+        alert(rest[1]); // of the Roman Republic<br>
+        alert(rest.length); // 2
+    </div>
+</body>
+</html>

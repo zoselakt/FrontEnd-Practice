@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise</title>
+    <script type="text/javascript" src="./promise.js"></script>
+</head>
+<body>
+    <div>
+        promise<br>
+        - 비동기 연산이 종료된 이후에 결과 값과 실패 사유를 처리하기 위한 처리기를 연결할 수 있습니다. <br>
+        프로미스를 사용하면 비동기 메서드에서 마치 동기 메서드처럼 값을 반환할 수 있습니다. <br>
+        다만 최종 결과를 반환하는 것이 아니고, 미래의 어떤 시점에 결과를 제공하겠다는 '약속'(프로미스)을 반환합니다.<br><br>
+        
+        const pr = new Promise((resolve, reject) => {<br>
+            setTimeout(() => {<br>
+                reject(new Error("err..."));<br>
+            }, 1000);<br>
+        });<br><br>
+    
+        console.log("시작");<br>
+        pr.then((result) => {<br>
+            console.log(result);<br>
+        })<br>
+        .catch((err) => {<br>
+            console.log(err);<br>
+        })<br>
+        .finally(() => {<br>
+            console.log("끝")<br>
+        })<br><br>
+    </div>
+    <div>
+        프로미스 체이닝<br>
+        - 프로미스 후속처리 메서드인 then, catch, finally를 호출하여 콜백지옥 대신 프로미스 체이닝으로 처리할수 있다.<br>
+        - 프로미스를 생성하고 종료될 때까지 3가지 상태가 있으며, 호출할때 콜백함수를 선언할 수 있고, 이행상태에서는 then으로 <br>
+        처리 결과 값을 받을 수 있다. 실패상태가 되면 catch()로 결과값을 받을 수 있다.<br><br>
+
+		const f1 = () => {<br>
+			return new Promise((res, rej) => {<br>
+				setTimeout(() => {<br>
+					res("1번 주문 완료");<br>
+				}, 1000);<br>
+			});<br>
+		};<br><br>
+
+		const f2 = (message) => {<br>
+			console.log(message);<br>
+			return new Promise((res, rej) => {<br>
+				setTimeout(() => {<br>
+					res("2번 주문 완료");<br>
+				}, 3000);<br>
+			});<br>
+		};<br><br>
+
+		const f3 = (message) => {<br>
+			console.log(message);<br>
+			return new Promise((res, rej) => {<br>
+				setTimeout(() => {<br>
+					res("3번 주문 완료");<br>
+				}, 2000);<br>
+			});<br>
+		};<br><br>
+
+		console.log("시작");<br>
+		f1()<br>
+		.then((res) => f2(res))<br>
+		.then((res) => f3(res))<br>
+		.then((res) => console.log(res))<br>
+		.catch(console.log)<br>
+		.finally(() => {<br>
+			console.log("끝");<br>
+		})<br><br>
+
+		// promise.all : 하나라도 누락되면 페이지 출력불가<br>
+		console.time('x');<br>
+		Promise.all([f1(), f2(), f3()]).then((res) => {<br>
+			document.write(res);<br>
+			console.timeEnd('x');<br>
+		});<br><br>
+
+		// promise.race : <br>
+		console.time('x');<br>
+		Promise.race([f1(), f2(), f3()]).then((res) => {<br>
+			document.write(res);<br>
+			console.timeEnd('x');<br>
+		});
+    </div>
+</body>
+</html>

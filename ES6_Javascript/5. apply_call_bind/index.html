@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>apply, call, bind</title>
+    <script type="text/javascript" src="./apply.js"></script>
+</head>
+<body>
+    <div>
+        객체로서의 함수 (apply, call, bind)<br>
+        - call: this를 특정값으로 지정할 수 있다.<br>
+        - apply: 함수 매개변수를 처리하는 방법을 제외하면 call과 완전히 같다.<br>
+        - bind: 함수의 this 값을 영구히 바꿀수 있다.<br>
+        call은 일반적인 함수와 마찬가지로 매개변수를 받고, apply는 매개변수를 배열로 받는다.<br><br>
+        
+        리터럴: 소스코드의 고정된 값<br>
+        함수리터럴: function(인수값){} / 익명함수와는 다르다(function 함수명(인수값{ }))<br>
+        객체리터럴: 변수 변수명 = {인수값}; / {} 부분이 객체리터럴<br>
+        배열리터럴: 변수 변수명 = [인수값]; / [] 부분이 변수 리터럴   <br><br>     
+    </div>
+    <div>
+        apply<br>
+        - 주어진 this 값과 배열로 제공되는 arguments로 함수를 호출한다.<br>
+        call() 구문과 유사 / call은 인수리스트를 받는데 apply는 인수들의 단일배열을 받는다.<br><br>
+
+        예)<br>
+            o1 = {val1 : 1, val2: 2,val3: 3}<br>
+            o2 = {v1: 10, v2: 50, v3: 100, v4:25}<br><br>
+
+            function sum1(){<br>
+                var _sum =0;<br>
+                for (var name in this) { //this<br>
+                    _sum += this[name];<br>
+                }<br>
+                return _sum;<br>
+            }<br><br>
+
+        - sum1을 apply하면 this를 명시해 주었기 때문에 o1객체의 sum1 인자가 된다.<br><br>
+    </div>
+    <div>
+        call<br>
+        - 이미 할당되어있는 다른 객체의 함수/메소드를 호출하는 해당 객체에 재할당할때 사용됩니다.<br>
+        apply()와 거의 동일하지만, call()은 인수 목록을, 반면에 apply()는 인수 배열 하나를 받는다<br>
+
+        예)<br>
+        function bakery (name, price){<br>
+            this.name = name;<br>
+            this.price = price;<br>
+            Product.call(this, name, price)<br>
+            this.getProduct = function(){<br>
+                alert(`bakery 카테고리에서 구매하신 상품은 ${name}이고 상품의 금액은 ${price} 원 입니다.`)<br>
+            }<br>
+        }<br><br>
+        
+        let bake = new bakery("cheese-bread", 7000);<br>
+        console.log(bake.name);<br>
+        console.log(bake.price);<br>
+        console.log(bake.getProduct());<br><br>
+    </div>
+    <div>
+        bind<br>
+        - 메소드가 호출되면 새로운 함수를 생성합니다. 받게되는 첫 인자의 value로는 this 키워드를 설정하고, 이어지는 인자들은 바인드된 함수의 인수에 제공됩니다<br>
+        바인딩한 함수는 원본 함수 객체를 감싸는 함수로, 바인딩한 함수를 호출하면 일반적으로 래핑된 함수가 호출 됩니다.<br>
+        func.bind(thisArg[, arg1[, arg2[, ...]]])<br>
+
+        this.x = 9;<br>
+        var module = {<br>
+        x: 81,<br>
+        getX: function() { return this.x; }<br>
+        };<br><br>
+
+        module.getX(); // 81<br>
+
+        var retrieveX = module.getX;<br>
+        retrieveX();<br>
+        // 9 반환 - 함수가 전역 스코프에서 호출됐음<br><br>
+
+        // module과 바인딩된 'this'가 있는 새로운 함수 생성<br>
+        // 신입 프로그래머는 전역 변수 x와<br>
+        // module의 속성 x를 혼동할 수 있음<br>
+        var boundGetX = retrieveX.bind(module);<br>
+        boundGetX(); // 81
+    </div>
+</body>
+</html>

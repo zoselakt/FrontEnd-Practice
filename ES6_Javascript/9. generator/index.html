@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>generator</title>
+    <script type="text/javascript" src="./generator.js"></script>
+</head>
+<body>
+    <div>
+        generator<br>
+        - 이터러블을 생성하는 함수, 단 한 번의 실행으로 함수의 끝까지 실행이 완료되는 일반 함수와는 달리<br>
+          제너레이터 함수는 사용자의 요구에 따라 다른 시간 간격으로 여러 값을 반환할 수 있으며, 간편하게 구현하여<br>
+          비동기 처리 상태를 관리할 수 있는 함수<br><br>
+       
+       - generator function 으로부터 반환된 값 iterable, iterator프로토콜을 따르는 객체<br><br>
+
+       - function* 키워드로 선언한다.<br><br>
+
+       function* fn(){<br>
+		console.log(1);<br>
+		yield 1;<br>
+		console.log(2);<br>
+		yield 2;<br>
+		console.log(3);<br>
+		console.log(4);<br>
+		yield 3;<br>
+		return "finish";<br>
+	}<br><br>
+
+	const a = fn();<br>
+	document.write(a);<br><br>
+    </div>
+    <div>
+        제너레이터는 이터러블(iterable)이면서 동시에 이터레이터(iterator)인 객체이다.<br>
+        iterable(반복 가능한 프로토콜):  <br>
+        - iterator를 반환하는 symbol.iterator메서드가 있다.<br>
+        iterator(반복자 프로토콜): <br>
+        - value와 done 속성을 가진 객체를 반환하는 next() 메서드를 가진다. 작업이 끝나면 done은 true가 된다.<br><br>
+
+        yield(): 제너레이터 함수를 멈추거나 다시 시작하게 하는데 사용되는 메소드<br>
+        next(): 표현식을 통해 yield된 값을 반환합니다.<br>
+        next메소드가 반복 호출될때 마다 다음 yield 까지 실행과 중지가 반복된다.<br><br>
+
+        제너레이터 함수 vs 일반함수<br>
+        1. 함수 호출자에게 함수 실행의 제어권을 양도(yield) 할 수 있다.<br>
+        2. 함수 호출자와 함수의 상태를 주고 받을수 있다.<br>
+        3. 호출 시 제너레이터 객체를 반환한다.<br><br>
+    </div>
+    <div>
+        // 여러가지<br>
+        function* fn1(){<br>
+            let index = 0;<br>
+            while(true){<br>
+                yield index++;<br>
+            }<br>
+        }<br><br>
+        const aa = fn1();<br>
+        console.log(fn1);<br><br>
+    
+        function* gen1(){<br>
+        yield "o";<br>
+            yield "n";<br>
+            yield "e";<br>
+        }<br><br>
+    
+        function* gen2(){<br>
+            yield "two";<br>
+            yield* gen1();<br>
+            yield "!";<br>
+        }<br><br>
+        console.log(gen1);<br>
+        console.log(gen2);<br>
+    </div>
+</body>
+</html>

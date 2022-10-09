@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> closure_scope </title>
+    <script type="text/javascript" src="./scope.js"></script>
+</head>
+<body>
+    <div>
+        1. 기본변수<br>
+        var: 함수스코프 - 함수밖에서사용o / 재선언, 재할당 가능 / 오류가능성 높음<br>
+        let : 블록스코프 - 함수밖에서사용x / 변하는값 / 재선언 불가, 재할당 가능<br>
+        const: 블록스코프 - 함수밖에서사용x / 변하지 않는 값 / 재선언 불가, 재할당 불가 / 선언과 동시에 초기화 해야한다.
+    </div>
+    <div>
+        2. 클로저(closure) <br>
+        - 외부 함수에 접근하여 내부함수에서 사용하기 위하여 사용된다. (스코프에 묶인 변수를 바인딩하기 위한 기술)<br>
+          일반적으로 내부 함수의 범위에서는 외부 함수범위에 있는 변수(지역변수)에 접근이 가능하지만<br>
+          외부의 있는 함수가 내부에 있는 함수에 접근하는 것은 가능하지 않다.<br><br>
+        
+        - 자바스크립트는 함수를 리턴하고, 리턴하는 함수가 클로저를 형성한다.(함수지향 프로그래밍)<br><br>
+        
+        클로저 순서<br>
+        1. 함수를 중첩으로 사용하여 외부와 단절시킴<br>
+        2. return을 사용하여 외부에 함수를 노출, 외부에서 매개변수 등을 통하여 내부함수에 접근할 수 있다.<br>
+        3. 함수를 생성자를 통해서 만들경우 함수를 만들어내는 공장과 같다<br>
+        4. class와 유사 : 객체의 형태를 제공 -> 내부함수가 그 역할을 한다<br><br>
+    </div>
+    <div>
+        예1)<br>
+        - 내부함수에 title변수가 없으면 외부함수에서 찾는다. / 외부함수가 종료된 이후에도 클로저를 통해 return받아 값을 출력한다.<br>
+	    function outter(){<br>
+		var title = 'coding everybody'; <br>
+		return function inner(){ <br>
+			alert(title); <br>
+		}<br>
+		inner(); // 함수 실행되면 접근할 수 없다.<br>
+	}
+	var inner = outter(); // 밖에서 사용하게끔 변수에 담는다.<br>
+	inner();<br>
+	console.log(inner);<br>
+
+    예2)<br>
+    function outFunc(){ // 파라미터없는 함수 / 여기서 실행해도 매개변수가 없기때문에 아무런 실행이 되지 않는다.<br>
+        let outerText = "outer-text";<br>
+        function innerFunc(a){ // a의 파라미터 던지기 함수<br>
+            let innerText = `innerText`;<br>
+            console.log(`${outerText}, ${a}`);<br>
+        }<br>
+        return innerFunc; // a 파라미터 던지기 / 종료된 함수를 외부로 던져서 외부에서 받을수 있다.<br>
+    }<br>
+    let closureFunc = new outFunc(); // outFunc을 객체화 하여 함수 밖에서 함수 값을 사용하게끔 변수에 담는다.<br>
+    closureFunc('클로저 함수 호출'); // return으로 받은값<br><br>
+    </div>
+    <div>
+        ※ 자바스크립트는 태생적으로는 이런 방법을 제공하지 않지만 클로저를 이용하여 프라이빗 메소드를 흉내내는 것이 가능하다. <br>
+        프라이빗 메소드는 코드에 제한적인 접근만을 허용한다는 점 뿐만 아니라 전역 네임 스페이스를 관리하는 강력한 방법을 <br>
+        제공하여 불필요한 메소드가 공용 인터페이스를 혼란스럽게 만들지 않도록 한다.<br>
+
+        function outFunc1(x){<br>
+            const y = 5;<br>
+            function innerFunc2(z){<br>
+                return x + y + z;<br>
+            }<br>
+            return innerFunc2;<br>
+        }<br>
+        let makeAdder10 = new outFunc(10); // 생성자로 인스턴스생성<br>
+        console.log(makeAdder10(2));<br><br>
+
+        내부함수를 리턴하지 않을때 데이터타입은 객체 / 리턴할때 데이터타입은 함수<br>
+        let closureFunct = new outFunc1(10);
+    </div>
+</body>
+</html>

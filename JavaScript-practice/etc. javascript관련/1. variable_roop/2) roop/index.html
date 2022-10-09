@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./roop.js"></script>
+</head>
+<body>
+    <div>
+        1. 배열반복문<br>
+        var arr = ['a', 'b', 'c'];<br>
+        for(var i=0; i<arr.length; i++ ){ <br>
+            document.write(arr[i]); <br>
+        }<br><br>
+    </div>
+    <div>
+        2. 반복문 / for in<br>
+        var grades = {'egoing':10, 'zoselakt':9, 'youtube':8};<br>
+        for(key in grades) {<br>
+        document.write("<br/>");<br>
+        document.write("<li>" + "key: " +key+ "value: " +grades[key]+ "</li>");<br>
+        }<br>
+        객체타입 출력<br>
+        for (let items in obj){<br>
+            console.log("for in구문으로 index출력하기: "+items);<br>
+            console.log("for in구문으로 value출력하기: "+obj[items]);<br><br>
+
+        // 일반 객체타입은 iterable하지 않기 때문에 for of를 사용할 수 없다.<br>
+        for(let items of array){<br>
+            console.log("for of구문으로 출력하기: "+items);<br>
+        }<br><br>
+    </div>
+    <div>
+        3. 반복문 / for of<br>
+        let days = ["mon", "tue", "wed"];<br>
+        for(let day of days) {<br>
+        document.write(day + "\t");<br>
+        }<br><br>
+
+        객체타입 출력 Object.entries 사용<br>
+        for(let [key, val] of Object.entries(obj)){<br>
+        console.log("for of 구문으로 출력하기: key:"+ key + " val: "+ val)<br>
+        }<br><br>
+    </div>
+    <div>
+        4.forEach<br>
+        let travel = ["제주도", "강원도", "거제도", "서울", "가평", "포항"];<br>
+        let count = 0;<br>
+        let once = 1;<br><br>
+
+        travel.forEach(element => {<br>
+            for (var i=count; i<travel.length; i++){<br>
+                    console.log(travel[i]);<br>
+                }<br>
+        });
+    </div>
+</body>
+</html>
