@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./restParameter.js"></script>
+</head>
+<body>
+    <div>
+        나머지 파라미터<br>
+        - Rest 파라미터는 말 그대로 나머지 역할을 하는 함수 파라미터입니다.<br>
+        함수의 파라미터에 쓰여서 뒤에 남는 요소들을 배열로 받아 줍니다.<br><br>
+       
+        function test(a, b, ...rest){ // Rest 파라미터 (...rest)<br>
+         console.log(a, b); // 1 2<br>
+         console.log(rest); // [3, 4, 5]<br>
+       }<br>
+       test(1, 2, 3, 4, 5);<br>
+       
+       Rest 파라미터는 남은 인수들을 배열로 만들어 주기 때문에 처음이나 중간에 올 수 없고, 마지막에만 올 수 있습니다.<br><br>
+    </div>
+    <div>
+        전개구문(Spread syntax)<br>
+        - 사용하면 배열이나 문자열과 같이 반복 가능한 문자를 0개 이상의 키-값의 쌍으로 객체로 확장시킬 수 있다.<br>
+
+        1. 배열 병합 (Array Concatenation)<br>
+        - concat 메서드 대신 spread 연산자를 이용하여 좀 더 깔끔한 배열 병합이 가능합니다.<br>
+
+        2. 배열복사<br>
+        - slice 또는 ES5의 map 대신 Spread 연산자를 사용하면, 새로운 복사된 배열을 생성할 수 있다.<br><br>
+    </div>
+    <div>
+        나머지 파라미터와 전개구문의 차이<br>
+        - 나머지 매개변수는 함수의 인수 전달 시에 마지막으로 사용되며, 전달된 인수들의 목록을 배열로 압축할때 사용되어진다.<br>
+        전개 구문은 뭉쳐있는 여러 개의 값들을 개별적인 값들의 목록으로 만들때 사용되어진다. 즉, <br>
+        나머지 매개변수는 배열로 합쳐주고, 전개 구문은 배열 또는 객체를 펼쳐주는 역할을 한다.
+    </div>
+</body>
+</html>

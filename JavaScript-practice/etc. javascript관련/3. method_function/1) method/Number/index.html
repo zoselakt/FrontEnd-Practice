@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./number.js"></script>
+</head>
+<body>
+    <div>
+        Number 메소드
+        - 숫자와 관련된 작업을 할 때 사용하는 메소드
+       
+        1. Number.parseFloat()
+           - 문자열을 파싱(parsing)하여, 문자열에 포함된 숫자 부분을 실수 형태로 반환한다
+           Number.parseFloat("12.34");      // 12.34
+           Number.parseFloat("12문자열");   // 12
+           Number.parseFloat("12 34 56");   // 12
+       
+       2. Number.parseInt()
+           - 문자열을 파싱하여, 문자열에 포함된 숫자 부분을 정수 형태로 반환한다
+           Number.parseInt("12.34");      // 12
+           Number.parseInt("12문자열");   // 12
+           Number.parseInt("12 34 56");   // 12
+       
+       3. Number.isNaN()
+           - 전달된 값이 NaN인지 아닌지를 확인하고 오직 숫자인 값에서만 동작하며, 그 값이 NaN인 경우에만 true를 반환한다.
+           Number.isNaN(NaN);       // true
+           Number.isNaN(0 / 0);     // true
+       
+       4. Number.isFinite()
+           -  전달된 값이 유한한 수인지 아닌지를 검사한다.
+           오직 셀 수 있는 값에서만 동작하며, 그 값이 유한한 경우에만 true를 반환
+           Number.isFinite(0);        // true
+           Number.isFinite(Infinity); // false
+           Number.isFinite(NaN);      // false
+    </div>
+    <div>
+       Number.prototype 메소드
+       - 모든 Number 인스턴스는 Number.prototype으로부터 메소드와 프로퍼티를 상속받는다.
+       
+       1. Number.prototype.toExponential()
+           - Number 인스턴스의 값을 지수 표기법으로 변환한 후, 그 값을 문자열로 반환한다.
+           var num = 12.3456;       // Number 인스턴스를 생성함.
+           num.toExponential();     // 1.23456e+1
+           num.toExponential(2);    // 1.23e+1
+       
+       2. Number.prototype.toFixed()
+           - Number 인스턴스의 소수 부분 자릿수를 전달받은 값으로 고정한 후, 그 값을 문자열로 반환한다.
+           var num = 3.14159265;  // Number 인스턴스를 생성함.
+           num.toFixed();         // 3
+           num.toFixed(2);        // 3.14
+       
+       3. Number.prototype.toPrecision()
+           - Number 인스턴스의 가수와 소수 부분을 합친 자릿수를 전달받은 값으로 고정한 후, 그 값을 문자열로 반환한다.
+           var num = 3.14159265;      // Number 인스턴스를 생성함.
+           num.toPrecision();         // 3.14159265
+           num.toPrecision(2);        // 3.1
+       
+       4. Number.prototype.toString()
+           - Number 인스턴스의 값을 문자열로 반환한다.
+           var num = 255;       // Number 인스턴스를 생성함.
+           num.toString();      // 255
+           (255).toString();    // 255
+           (100).toString(16);  // 64
+       
+       5. Number.prototype.valueOf()
+           - Number 인스턴스가 가지고 있는 값을 반환한다.
+           var numObj = new Number(123); // 123의 값을 가지는 Number 인스턴스를 생성함.
+           typeof numObj;  // object
+           var num = numObj.valueOf();
+           num; // 123
+           typeof num; // number
+    </div>
+</body>
+</html>

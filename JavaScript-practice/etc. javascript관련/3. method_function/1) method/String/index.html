@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./String.js"></script>
+</head>
+<body>
+    <div>
+    String 메소드
+    - String 메소드는 String 객체에 정의된 문자열과 관련된 작업을 할 때 사용하는 메소드입니다.
+        1. String.fromCharCode()
+        - 유니코드에 해당하는 문자들로 구성된 문자열을 반환
+        String.fromCharCode(65, 66, 67); // "ABC"
+
+        2. String.fromCodePoint()
+        - 쉼표로 구분되는 일련의 코드 포인트(code point)에 해당하는 문자들로 구성된 문자열을 반환
+        String.fromCodePoint(65, 66, 67); // "ABC"
+
+        문자열 추출
+        - 시작 인덱스부터 종료 인덱스 바로 앞까지의 문자열만을 추출하여 만든 새로운 문자열을 반환
+        1. slice()
+        2. substring()
+        3. substr()
+
+        var str = "abcDEFabc";
+            str.slice(2, 6);     // cDEF     -> 인덱스 2부터 인덱스 5까지의 문자열을 추출함.
+            str.slice(-4, -2);   // Fa       -> 음수로 전달된 인덱스는 문자열의 뒤에서부터 시작함.
+            str.slice(2);        // abcDEFab -> 인수로 종료 인덱스가 전달되지 않으면 문자열의 마지막까지 추출함.
+            str.substring(2, 6); // cDEF
+            str.substr(2, 4);    // cDEF
+            
+        문자열 분리
+        - split() : 구분자(separator)를 기준으로 나눈 후, 나뉜 문자열을 하나의 배열로 반환
+
+        문자열 결합
+        - concat() : 전달받은 문자열을 결합한 새로운 문자열을 반환
+
+        문자열 주위의 공백 제거
+        - trim() : String 인스턴스의 양 끝에 존재하는 모든 공백과 줄 바꿈 문자(LF, CR 등)를 제거한 새로운 문자열을 반환
+
+        문자열 위치 값 반환
+        - indexOf() : 특정 문자나 문자열 위치의 인덱스를 반환함.
+        - charAt() : String 인스턴스에서 전달받은 인덱스에 위치한 문자를 반환함.
+
+        문자열 반복
+        - repeat() : 해당 문자열을 인수로 전달받은 횟수만큼 반복하여 결합한 새로운 문자열을 반환함.
+
+        String.prototype 메소드
+        1. search()
+            - 인수로 전달받은 정규 표현식에 맞는 문자나 문자열이 처음으로 등장하는 위치의 인덱스를 반환함.
+        2. match()
+            - 인수로 전달받은 정규 표현식에 맞는 문자열을 찾아서 하나의 배열로 반환함.
+        3. replace()
+            - 인수로 전달받은 패턴에 맞는 문자열을 대체 문자열로 변환한 새 문자열을 반환함.
+        4. includes()
+            - 인수로 전달받은 문자나 문자열이 포함되어 있는지를 검사한 후 그 결과를 불리언 값으로 반환함.
+        5. startsWith()
+            - 인수로 전달받은 문자나 문자열로 시작되는지를 검사한 후 그 결과를 불리언 값으로 반환함.
+        6. endsWith()
+            - 인수로 전달받은 문자나 문자열로 끝나는지를 검사한 후 그 결과를 불리언 값으로 반환함.
+    </div>
+</body>
+</html>

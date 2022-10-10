@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./number.js"></script>
+</head>
+<body>
+    <div>
+        Date 메소드
+
+        Date.now()
+        - 1970년 1월 1일 0시 0분 0초부터 현재까지의 시간을 밀리초(millisecond) 단위의 정수로 반환한다. 
+        var nowMiliSec = Date.now();
+        nowMiliSec;           // 1970년 1월 1일 00:00:00부터 현재까지의 밀리초
+        new Date(nowMiliSec); // new Date()와 같은 결과를 반환함.
+        new Date();
+       
+        Date.prototype getter 메소드
+         - 날짜와 관련된 정보를 받아오기 위한 메소드입니다.
+           1. getFullYear()
+             - 현재 연도를 4비트의 숫자(YYYY)로 반환
+           2. getDate()
+             - 현재 날짜에 해당하는 숫자를 반환
+           3. getDay()
+             - 현재 요일에 해당하는 숫자를 반환(일요일(0)부터 시작하여 토요일(6))
+           4. getTime()
+             -  1970년 1월 1일 0시 0분 0초부터 현재까지의 시간을 밀리초 단위로 환산한 값을 숫자로 반환
+       
+       Date.prototype setter 메소드    
+        - 날짜와 관련된 정보를 설정하기 위한 메소드
+       1. setFullYear()
+         - Date 객체의 값을 특정 날짜로 설정
+       2. setDate()
+         - Date 객체의 일자 값을 특정 일자로 설정
+    </div>
+</body>
+</html>
